@@ -36,6 +36,26 @@ covid_data_count |>
 ```
 
 1. Write code for a plot and describe what you observe?
+```{r}
+covid_data_count |> 
+filter(state_name == "Connecticut", race == "Asian") |>
+ggplot() + 
+  stat_summary(aes(x = date, y = Cases), geom = "bar", color = '#ADD8E6') +
+  stat_summary(aes(x = date, y = Deaths), geom = "line", color = 'black') +
+  labs(
+    x = "Date",
+    y = "Quatity",
+    title = "Number of Covid Cases and Deaths in Asian Population of Connecticut vs. Date"
+  )
+```
+This graph consists of two graphs, one depicts the number of Covid cases in the Asian population of Connecticut which is depicted by the bar graph and the second graph is a line graph used to depict the daily number of deaths in the Asian population of Connecticut.
+
 2. Are there any conclusions you can draw?
+This graph displays the number of Covid-19 cases and deaths vs. date for the Asian population in Connecticut. This graph shows that there was a steady increase in the number of cases and deaths that were recorded in that population. There were points where the slope is lower (around July) but then there is a very sharp increase in the slope indicating a drastic rise in the cases.
+
 3. What were you not able to do due to not having the R knowledge?
+There are quiet a few shortcomings I had in this figure. Firstly, I wanted to space out the dates of the recorded cases, the data set provides data every 3 days apart, for the bar graph there are too many bars due to the frequency of the reporting and that cause the graph to look overcrowded. I wanted to space the bars out and have it show the cases and deaths every 12 days apart but couldn't. Another shortcoming I had was wanting to plot a dot at the total death values so that we can see the total from the figure. I also wanted to add a legend where I could specify the bar graph is Covid Cases while the line graph is Covid Deaths but I do not know how to make such specific legends yet. Finally, I wanted to have the death values accumulate over the dates so we could see how the total deaths relates to the cases during those dates, but due to not knowing the correct functions I was incapable of doing that,
+
 4. What other data would be useful to better understand this data?
+To better understand the scope of this data it would be useful to have the total Covid Case Count and total Covid Death counts also be displayed on the same plot to see how much of the total was made up by the Asian population in Connecticut.
+

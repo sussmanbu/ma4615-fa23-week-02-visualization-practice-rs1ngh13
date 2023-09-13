@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -151,9 +151,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <ol type="1">
 <li>Write code for a plot and describe what you observe?</li>
-<li>Are there any conclusions you can draw?</li>
-<li>What were you not able to do due to not having the R knowledge?</li>
-<li>What other data would be useful to better understand this data?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>covid_data_count <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Connecticut"</span>, race <span class="sc">==</span> <span class="st">"Asian"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> Cases), <span class="at">geom =</span> <span class="st">"bar"</span>, <span class="at">color =</span> <span class="st">'#ADD8E6'</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> Deaths), <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">color =</span> <span class="st">'black'</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Quatity"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Number of Covid Cases and Deaths in Asian Population of Connecticut vs. Date"</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No summary function supplied, defaulting to `mean_se()`
+No summary function supplied, defaulting to `mean_se()`</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Week_02_Covid_Vis_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This graph consists of two graphs, one depicts the number of Covid cases in the Asian population of Connecticut which is depicted by the bar graph and the second graph is a line graph used to depict the daily number of deaths in the Asian population of Connecticut.</p>
+<ol start="2" type="1">
+<li><p>Are there any conclusions you can draw? This graph displays the number of Covid-19 cases and deaths vs.&nbsp;date for the Asian population in Connecticut. This graph shows that there was a steady increase in the number of cases and deaths that were recorded in that population. There were points where the slope is lower (around July) but then there is a very sharp increase in the slope indicating a drastic rise in the cases.</p></li>
+<li><p>What were you not able to do due to not having the R knowledge? There are quiet a few shortcomings I had in this figure. Firstly, I wanted to space out the dates of the recorded cases, the data set provides data every 3 days apart, for the bar graph there are too many bars due to the frequency of the reporting and that cause the graph to look overcrowded. I wanted to space the bars out and have it show the cases and deaths every 12 days apart but couldn’t. Another shortcoming I had was wanting to plot a dot at the total death values so that we can see the total from the figure. I also wanted to add a legend where I could specify the bar graph is Covid Cases while the line graph is Covid Deaths but I do not know how to make such specific legends yet. Finally, I wanted to have the death values accumulate over the dates so we could see how the total deaths relates to the cases during those dates, but due to not knowing the correct functions I was incapable of doing that,</p></li>
+<li><p>What other data would be useful to better understand this data? To better understand the scope of this data it would be useful to have the total Covid Case Count and total Covid Death counts also be displayed on the same plot to see how much of the total was made up by the Asian population in Connecticut.</p></li>
 </ol>
 
 </main>
